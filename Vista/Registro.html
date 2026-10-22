@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CLUB ADSO</title>
+    <link rel="stylesheet" href="../assets/CSS/EstiloFormulario.css">
+
+</head>
+<body>
+    <div class="contenedor-formulario">
+        <h2>Registro de Asociado - Acerias</h2>
+
+        <form id="FormuRegistro" action="" method="POST">
+            <div class="grupo-input">
+                <label>Ingresar Documento: </label>
+                <input id="documento" type="number" placeholder="Ejemplo: 1050200336">
+
+            </div>
+            <div class="grupo-input">
+                <label>Nombres: </label>
+                <input type="text" id="Nombres" required placeholder="Ingresa Tus Nombres Completos">
+
+            </div>
+            <div class="grupo-input">
+                <label>Apellidos: </label>
+                <input type="text" id="Apellidos" required placeholder="Ingresa Tus Apellidos Completos">
+            </div>
+            <div class="grupo-input">
+                <label>Fecha De Nacimiento: </label>
+                <input type="date" id="Fecha Nacimiento" required>
+            </div>
+            <div class="grupo-input">
+                <label>Dirección De Residencia: </label>
+                <input type="text" id="DirecciónRecidencia" required placeholder="Ej: Cra 22 # 20 - 10 ">
+            </div>
+            <div class="grupo-input">
+                <label>Ciudad: </label>
+                <select id="Ciudad" requiered>
+                    <option value="Sogamoso">Sogamoso</option>
+                    <option value="Cerinza">Cerinza</option>
+                    <option value="Duitama">Duitama</option>
+                </select>
+            </div>
+            <div class="grupo-input">
+                <label>Telefono: </label>
+                <input type="text" id="Telefono" required placeholder="316127074">
+            </div>
+            <div class="grupo-input">
+                <label>Email: </label>
+                <input type="text" id="Email" required placeholder="verdugokaren022@gmail.com">
+
+    </div>
+    <div class="grupo-input">
+        <label>Genero: </label>
+        <label>
+            <input type="radio" id="Femenino" name="genero" values="Femenino">
+            <span=>Femenino</span>
+        </label>
+        <label>
+            <input type="radio" id="Masculino" name="genero" values="Masculino">
+            <span=>Masculino</span>
+        </label>
+        <label>
+            <input type="radio" id="Otro" name="genero" values="Otro">
+            <span=>Otro</span>
+        </label>
+    </div>
+    <div class="grupo-botones">
+        <button type="submit">Guardar</button>
+        <button type="reset">Limpiar Formulario</button>
+    </div>
+    </form>
+    </div>
+</body>
+
+</html>

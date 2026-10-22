@@ -1,0 +1,72 @@
+*{
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+body{
+    background-color:#b9eeca;
+    display:flex;
+    justify-content: center; /*horizontal*/
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h2{
+    color: blue;
+    margin-bottom: 20px;
+    font-size: 50px;
+    text-align: center;
+    border-bottom:2px solid #67fff7;
+    padding: 15px 0;
+}
+
+.grupo-input{
+    margin-bottom: 15px;
+    display:flex;
+    flex-direction: column;
+
+}
+
+.grupo-botones{
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button{
+    flex: 1;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight:bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #d31bba;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+input:focus, select:focus {
+    border-color: #67fff7;/* Cambié el color del borde al enfocar */
+    box-shadow: 0 0 5px rgba(121, 3, 255, 0.856);/* Añadí una sombra al enfocar para resaltar el campo */
+}
+
+.contenedor-formulario{
+    background-color: #fff;/* Cambié el color de fondo */
+    padding: 30px;/* Aumenté el padding para más espacio */
+    border-radius: 8px;/* Aumenté el radio de borde para esquinas más redondeadas */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);/* Añadí una sombra para darle profundidad */
+    width: 100%;/* Cambié el ancho a 100% para que ocupe todo el contenedor */
+    max-width: 500px;/* Limité el ancho máximo a 500px para que no se vea demasiado grande en pantallas grandes */
+}
+
+button[type="submit"] {
+    background-color: #2400f1;/* Cambié el color de fondo del botón de enviar */
+    color: white;/* Cambié el color del texto del botón de Guardar */
+}
