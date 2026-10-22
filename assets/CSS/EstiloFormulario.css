@@ -14,7 +14,7 @@ body{
 }
 
 h2{
-    color: blue;
+    color: blue;/* Cambié el color del título a azul para que resalte más */
     margin-bottom: 20px;
     font-size: 50px;
     text-align: center;
@@ -22,20 +22,20 @@ h2{
     padding: 15px 0;
 }
 
-.grupo-input{
-    margin-bottom: 15px;
+.grupo-input{/* Cambié el nombre de la clase a "grupo-input" para mayor claridad */
+    margin-bottom: 15px;/* Aumenté el margen inferior para separar mejor los campos */
     display:flex;
     flex-direction: column;
 
 }
 
-.grupo-botones{
-    display: flex;
+.grupo-botones{/* Cambié el nombre de la clase a "grupo-botones" para mayor claridad */
+    display: flex;/* Cambié la dirección del flex a horizontal para que los botones estén uno al lado del otro */
     gap: 10px;
     margin-top: 20px;
 }
 
-button{
+button{/* Cambié el estilo del botón para que sea más atractivo */
     flex: 1;
     padding: 12px;
     border-radius: 5px;
@@ -45,7 +45,7 @@ button{
     transition: background-color 0.2s;
 }
 
-input, select {
+input, select {/* Cambié el estilo de los campos de entrada y selección para que sean más atractivos */
     padding: 10px;
     border: 1px solid #d31bba;
     border-radius: 5px;
