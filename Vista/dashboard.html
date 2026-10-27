@@ -9,10 +9,30 @@
     <title>CLUB ACERIAS - Panel Principal</title>
 
     <style>
+        .header-mr {
+            background-color: #2170be;
+            border-bottom: 1px solid #1a7fe4;
+            padding: 20px 3px;
+        }
+        .modulo-card {
+            border-top: 4px solid #15d2df;
+            border-radius: 10px;
+            transition: 0.2s;
+            cursor: pointer;
+            height: 100%;
+        }
+        .modulo-card.asociado {
+            border-top-color:rgb(100, 237, 180);
+        }
+        .modulo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(150, 180, 15, 0.795) !important;
+        }
         .icono-principal {
             font-size: 45px;
             color: #0d4dfd;
         }
+
     </style>
 
 </head>
@@ -22,8 +42,8 @@
     <div class="header-mr d-flex justify-content-between align-items-center">
         <h3>CLUB ACERIAS - Panel Principal</h3>
         <div class="text-end">
-            <small>Pepito Perez</small>
-            <button class="btn btn-danger btn-sm mt-1">
+            <small id="nombreUsuario"></small>
+            <button class="btn btn-danger btn-sm mt-1" onclick="cerrarSesion()">
                 <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
             </button>
         </div>
@@ -31,7 +51,7 @@
 
     <div class="container py-4">
         <h5 class="mb-4 fw-bold">Modulos del club de asociados</h5>
-        <div id="tarjetasAdministrador" class="row g-4"></div>
+        <div id="tarjetasAdministrador" class="row g-4">
             <div class="col-md-3">
                 <div class="card modulo-card shadow-sm p-3">
                     <i class="bi bi-people icono-principal"></i>
@@ -54,9 +74,45 @@
                     </p>
                 </div>
             </div>
+            <div class="col-md-3">
+                <div class="card modulo-card shadow-sm p-3">
+                    <i class="bi bi-people icono-principal"></i>
+                    <h4 class="text-primary">Actividades</h4>
+                    <strong>Registro de Actividades</strong>
+                    <p class="small text-muted mt-2">
+                        Controlar eventos profondos y registrar los dineros recaudados.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card modulo-card shadow-sm p-3">
+                    <i class="bi bi-people icono-principal"></i>
+                    <h4 class="text-primary">Reportes</h4>
+                    <strong>Consultas y Saldos</strong>
+                    <p class="small text-muted">Ver reportes del club.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tarjetasAsociado" class="row g-4 d-none">
+            <div class="col-md-3">
+                <div class="card modulo-card asociado shadow-sm p-3">
+                    <i class="bi bi-person-vcard icono-principal"></i>
+                    <h4 class="text-muted">Ver Mi Perfil</h4>
+                    <p class="small text-muted">Ver mis datos y préstamos.</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card modulo-card asociado shadow-sm p-3">
+                    <i class="bi bi-people icono-principal"></i>
+                    <h4 class="text-muted">Mis Pagos</h4>
+                    <p class="small text-muted">Ver el estado de mis pagos.</p>
+                </div>
+            </div>
         </div>
     </div>
 
 </body>
+<script src="Controlador/pagina principal.js"></script>
 
 </html>
