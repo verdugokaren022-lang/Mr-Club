@@ -22,8 +22,7 @@ if (rol === 'admin') {
 });
 
 
-function cerrarSesion(){
+function cerrarSesion() {
     localStorage.clear();
-    window.location.href= '../Vista/Login.html';
-
+    window.location.href = 'login.html';
 }

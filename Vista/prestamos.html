@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>CLUB ACERIAS - Registro de Préstamos</title>
+    <style>
+        .header-mr {
+            background-color: #dd0f8e;
+            border-bottom: 1px solid #cc1ae4;
+            padding: 20px 3px;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <!-- Barra Superior -->
+    <div class="header-mr d-flex justify-content-between align-items-center px-4 text-white">
+        <h3>CLUB ACERIAS - Gestión de Préstamos</h3>
+        <a href="dashboard.html" class="btn btn-light btn-sm">
+            <i class="bi bi-arrow-left"></i> Volver al Panel
+        </a>
+    </div>
+
+    <!-- Contenedor del Formulario -->
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow p-4">
+                    <h4 class="text-primary mb-4"><i class="bi bi-cash-stack"></i> Registrar Nuevo Préstamo</h4>
+                    
+                    <form>
+                        <!-- Documento del asociado para relacionar el préstamo -->
+                        <div class="mb-3">
+                            <label for="documento" class="form-label">Documento del Asociado</label>
+                            <input type="text" class="form-control" id="documento" required placeholder="Cédula del asociado">
+                        </div>
+
+                        <div class="row">
+                            <!-- Valor del préstamo (Recuerda que el PDF dice que no debe superar los 80 millones en total por asociado) -->
+                            <div class="col-md-6 mb-3">
+                                <label for="valorPrestamo" class="form-label">Valor del Préstamo</label>
+                                <input type="number" class="form-control" id="valorPrestamo" required placeholder="Ej. 5000000">
+                            </div>
+                            <!-- Tasa de interés -->
+                            <div class="col-md-6 mb-3">
+                                <label for="tasaInteres" class="form-label">Tasa de Interés (%)</label>
+                                <input type="number" step="0.01" class="form-control" id="tasaInteres" required placeholder="Ej. 1.5">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <!-- Número de cuotas mensuales -->
+                            <div class="col-md-6 mb-3">
+                                <label for="numeroCuotas" class="form-label">Número de Cuotas</label>
+                                <input type="number" class="form-control" id="numeroCuotas" required placeholder="Ej. 12">
+                            </div>
+                            <!-- Fecha en la que se otorga el préstamo -->
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaPrestamo" class="form-label">Fecha del Préstamo</label>
+                                <input type="date" class="form-control" id="fechaPrestamo" required>
+                            </div>
+                        </div>
+
+                        <!-- Botones -->
+                        <div class="d-flex justify-content-end gap-2 mt-3">
+                            <button type="reset" class="btn btn-secondary">Limpiar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Préstamo</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
