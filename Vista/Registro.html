@@ -10,32 +10,32 @@
     <div class="contenedor-formulario">
         <h2>Registro de Asociado - Acerias</h2>
 
-        <form id="FormuRegistro" action="" method="POST">
+        <form id="FormuRegistro" action="../Modelo/GuardarAsociado.php" method="POST">
             <div class="grupo-input">
                 <label>Ingresar Documento: </label>
-                <input id="documento" type="number" placeholder="Ejemplo: 1050200336">
+                <input id="documento" type="number" name="documento" required placeholder="Ejemplo: 1050200336">
 
             </div>
             <div class="grupo-input">
                 <label>Nombres: </label>
-                <input type="text" id="Nombres" required placeholder="Ingresa Tus Nombres Completos">
+                <input type="text" id="Nombres" name="nombres" required placeholder="Ingresa Tus Nombres Completos">
 
             </div>
             <div class="grupo-input">
                 <label>Apellidos: </label>
-                <input type="text" id="Apellidos" required placeholder="Ingresa Tus Apellidos Completos">
+                <input type="text" id="Apellidos" name="apellidos" required placeholder="Ingresa Tus Apellidos Completos">
             </div>
             <div class="grupo-input">
                 <label>Fecha De Nacimiento: </label>
-                <input type="date" id="Fecha Nacimiento" required>
+                <input type="date" id="Fecha Nacimiento" name="fecha_nacimiento" required>
             </div>
             <div class="grupo-input">
                 <label>Dirección De Residencia: </label>
-                <input type="text" id="DirecciónRecidencia" required placeholder="Ej: Cra 22 # 20 - 10 ">
+                <input type="text" id="DirecciónRecidencia" name="direccion" required placeholder="Ej: Cra 22 # 20 - 10 ">
             </div>
             <div class="grupo-input">
                 <label>Ciudad: </label>
-                <select id="Ciudad" requiered>
+                <select id="Ciudad" name="ciudad" required>
                     <option value="Sogamoso">Sogamoso</option>
                     <option value="Cerinza">Cerinza</option>
                     <option value="Duitama">Duitama</option>
@@ -43,18 +43,18 @@
             </div>
             <div class="grupo-input">
                 <label>Telefono: </label>
-                <input type="text" id="Telefono" required placeholder="316127074">
+                <input type="text" id="Telefono" name="telefono" required placeholder="316127074">
             </div>
             <div class="grupo-input">
                 <label>Email: </label>
-                <input type="text" id="Email" required placeholder="verdugokaren022@gmail.com">
+                <input type="text" id="Email" name="email" required placeholder="verdugokaren022@gmail.com">
 
     </div>
     <div class="grupo-input">
         <label>Genero: </label>
         <label>
             <input type="radio" id="Femenino" name="genero" values="Femenino">
-            <span=>Femeni</span>
+            <span=>Femenino</span>
         </label>
         <label>
             <input type="radio" id="Masculino" name="genero" values="Masculino">
@@ -69,6 +69,7 @@
         <button type="submit">Guardar</button>
         <button type="reset">Limpiar Formulario</button>
     </div>
+    <p id="mensajeRegistro" role="status" aria-live="polite"></p>
     </form>
     </div>
 </body>
