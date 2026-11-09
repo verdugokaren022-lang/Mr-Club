@@ -11,6 +11,7 @@ class Asociados{
     private $ciudad;
     private $telefono;
     private $email;
+    private $contraseña;
 
     private $conexion;
     
@@ -24,14 +25,15 @@ public function __construct($datos){
    $this->ciudad = $datos['ciudad'];
    $this->telefono = $datos['telefono'];
    $this->email = $datos['email'];
+   $this->contraseña = password_hash($datos['contraseña'], PASSWORD_DEFAULT);
 
    $conexionDB = new Conexion();
    $this->conexion = $conexionDB->conectar();
 }
 
 public function guardar() {
-    $sql = "INSERT INTO asociados (documento, nombres, apellidos, fechaNacimiento, genero, direccionResidencia, ciudad, telefono, email) 
-            VALUES (:documento, :nombres, :apellidos, :fechaNacimiento, :genero, :direccionResidencia, :ciudad, :telefono, :email)";
+    $sql = "INSERT INTO asociados (documento, nombres, apellidos, fechaNacimiento, genero, direccionResidencia, ciudad, telefono, email, contraseña) 
+            VALUES (:documento, :nombres, :apellidos, :fechaNacimiento, :genero, :direccionResidencia, :ciudad, :telefono, :email, :contraseña)";
     $consulta = $this->conexion->prepare($sql);    
     return $consulta->execute([
         ':documento' => $this->documento,
@@ -42,7 +44,8 @@ public function guardar() {
         ':direccionResidencia' => $this->direccionResidencia,
         ':ciudad' => $this->ciudad,
         ':telefono' => $this->telefono,
-        ':email' => $this->email
+        ':email' => $this->email,
+        ':contraseña' => $this->contraseña
     ]);    
 
 }

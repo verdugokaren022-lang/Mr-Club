@@ -10,7 +10,7 @@
     <div class="contenedor-formulario">
         <h2>Registro de Asociado - Acerias</h2>
 
-        <form id="FormuRegistro" action="../Modelo/GuardarAsociado.php" method="POST">
+        <form id="FormuRegistro" action="../Modelo/guardarAsociado.php" method="POST">
             <div class="grupo-input">
                 <label>Ingresar Documento: </label>
                 <input id="documento" type="number" name="documento" required placeholder="Ejemplo: 1050200336">
@@ -27,11 +27,13 @@
             </div>
             <div class="grupo-input">
                 <label>Fecha De Nacimiento: </label>
-                <input type="date" id="Fecha Nacimiento" name="fecha_nacimiento" required>
+                <input type="date" id="FechaNacimiento" name="fechaNacimiento" required>
             </div>
             <div class="grupo-input">
                 <label>Dirección De Residencia: </label>
-                <input type="text" id="DirecciónRecidencia" name="direccion" required placeholder="Ej: Cra 22 # 20 - 10 ">
+                <input type="text" id="DirecciónResidencia" name="direccionResidencia" required placeholder="Ej: Cra 22 # 2
+                
+                0 - 10 ">
             </div>
             <div class="grupo-input">
                 <label>Ciudad: </label>
@@ -48,30 +50,40 @@
             <div class="grupo-input">
                 <label>Email: </label>
                 <input type="text" id="Email" name="email" required placeholder="verdugokaren022@gmail.com">
+            </div>
+            
+            <div class="grupo-input">
+                <label for="contraseña">Contraseña: </label>
+                <input type="contraseña" id="contraseña" name="contraseña" minlength="8" autocomplete="new-password" required placeholder="Minimo 8 caracteres">
+            </div>
+    
+            <div class="grupo-input">
+                <label for="confirmarContraseña">Confirmar Contraseña: </label>
+                <input type="contraseña" id="confirmarContraseña" name="confirmarContraseña" minlength="8" autocomplete="new-password" required placeholder="Confirma tu contraseña">
+            </div>
 
-    </div>
-    <div class="grupo-input">
-        <label>Genero: </label>
-        <label>
-            <input type="radio" id="Femenino" name="genero" values="Femenino">
-            <span=>Femenino</span>
-        </label>
-        <label>
-            <input type="radio" id="Masculino" name="genero" values="Masculino">
-            <span=>Masculino</span>
-        </label>
-        <label>
-            <input type="radio" id="Otro" name="genero" values="Otro">
-            <span=>Otro</span>
-        </label>
-    </div>
-    <div class="grupo-botones">
-        <button type="submit">Guardar</button>
-        <button type="reset">Limpiar Formulario</button>
-    </div>
-    <p id="mensajeRegistro" role="status" aria-live="polite"></p>
-    </form>
+            <div class="grupo-input">
+                <label>Genero: </label>
+                <label>
+                    <input type="radio" id="Femenino" name="genero" value="Femenino">
+                    <span>Femenino</span>
+                </label>
+                <label>
+                    <input type="radio" id="Masculino" name="genero" value="Masculino">
+                    <span>Masculino</span>
+                </label>
+                <label>
+                    <input type="radio" id="Otro" name="genero" value="Otro">
+                    <span>Otro</span>
+                </label>
+            </div>
+            <div class="grupo-botones">
+                <button type="submit">Guardar</button>
+                <button type="reset">Limpiar Formulario</button>
+            </div>
+            <p id="mensajeRegistro" role="status" aria-live="polite"></p>
+        </form>
     </div>
 </body>
-
+<script src="../Controlador/asociados.js"></script>
 </html>

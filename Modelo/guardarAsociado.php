@@ -1,6 +1,6 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
-require_once __DIR__ . '/../Modelo/asociados.php';
+require_once __DIR__ . '/asociados.php';
 
 try{
      if ($_SERVER['REQUEST_METHOD'] !=='POST') {
@@ -22,7 +22,7 @@ if(!is_array($datos) || json_last_error() !== JSON_ERROR_NONE) {
     throw new Exception("Datos inválidos");
 }
 
-$campos=["documento", "nombres", "apellidos", "fechaNacimiento", "genero", "direccionResidencia", "ciudad", "telefono", "email"];
+$campos=["documento", "nombres", "apellidos", "fechaNacimiento", "genero", "direccionResidencia", "ciudad", "telefono", "email", "contraseña"];
 
 foreach ($campos as $campo){
     if(!isset($datos[$campo])){
@@ -59,4 +59,3 @@ foreach ($campos as $campo){
 }catch (Exception $e) {
     echo json_encode(["success" => false, "mensaje" =>$e->getMessage()]);
 }
-
