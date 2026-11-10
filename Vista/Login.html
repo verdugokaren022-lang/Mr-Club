@@ -10,7 +10,7 @@
         <div class="container-login">
             <h2>Iniciar Sesión Accerías</h2>
 
-            <form id="FormuLogin" action="" method="POST">
+            <form id="FormuLogin" action="../Modelo/IniciarSesion.phps" method="POST">
                 <div class="grupo-input">
                     <label for="Email">Correo Electrónico: </label>
                     <input type="email" id="Email" required placeholder="Ingresa Tu Correo Electrónico">
@@ -28,6 +28,7 @@
                 <p class="texto-link">
                     ¿No tienes una cuenta? <a href="Registro.html">Regístrate aquí</a>
                 </p>
+                <p id="mensajeLogin" class="text-danger mt-3 mb-0" role="alert"></p>
             </form>
         </div>
 

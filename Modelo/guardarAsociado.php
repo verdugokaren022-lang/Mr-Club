@@ -8,8 +8,7 @@ try{
 
         //Saltar a catch y mostrar el mensaje de error
         throw new Exception("Método HTTP no permitido");        
-}
-
+    }
 // Leer el contenido JSON de la solicitud enviada por fetch
 $json = file_get_contents('php://input');
 
@@ -36,7 +35,7 @@ foreach ($campos as $campo){
     }
     $asociado = new Asociados($datos);
 
-    $asociado->guardar();
+    $resultado = $asociado->guardar();
 
     if($resultado) {
         http_response_code(201);
