@@ -1,5 +1,5 @@
-const formulario = document.getElementById('FormuLogin');
-formulario.addEventListener('submit', async function (e) {
+const formulario = document.getElementById("FormuLogin");
+formulario.addEventListener("submit", async function (e) {
     e.preventDefault();
     alert("Formulario enviado"); // Muestra un alert cuando se envía el formulario
 
@@ -9,18 +9,23 @@ formulario.addEventListener('submit', async function (e) {
     try {
         const respuesta = await fetch(formulario.action, {
             method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Object.fromEntries(new FormData(formulario).entries()),// Convertir los datos del formulario en un objeto y luego a JSON
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(
+                Object.fromEntries(new FormData(formulario).entries()),// Convertir los datos del formulario en un objeto y luego a JSON
         ),
     });
 
-    const resultado = await respuesta.json();// Pasar la respuesta a JSON a un objeto de JavaScript
+alert("Respuesta recibida"); // Muestra un alert cuando se recibe la respuesta del servidor
+   
+const resultado = await respuesta.json();// Pasar la respuesta a JSON a un objeto de JavaScript
     if(!resultado.success) {
         mensaje.textContent = 
-        "No fue posible iniciarsesión. Por favor, verifique sus credenciales.";
+        "No fue posible iniciar sesión. Por favor, verifique sus credenciales.";
     boton.disabled = false;
     return;// Salir de la función si la respuesta no es exitosa
     }
+    
+alert("Inicio de sesión exitoso"); // Muestra un alert cuando el inicio de sesión es exitoso
 
     localStorage.setItem("logueado", "true");
     localStorage.setItem("rol", resultado.rol);
@@ -30,8 +35,9 @@ formulario.addEventListener('submit', async function (e) {
 
 
     }catch (error) {
-        console.error('Error al enviar el formulario:', error);
-        mensaje.textContent = "Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo más tarde.";
+        console.error("Error al enviar el formulario: ", error);
+        mensaje.textContent = 
+            "Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo más tarde.";
     } finally {
         boton.disabled = false;
     }

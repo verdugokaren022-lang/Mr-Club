@@ -22,7 +22,17 @@ if (rol === 'admin') {
 });
 
 
-function cerrarSesion() {
-    localStorage.clear();
-    window.location.href = 'login.html';
+async function cerrarSesion() {
+    try{
+    const respuesta=await fetch("../Modelo/cerrarSesion.php", {method: 'POST'});
+     
+    if (!respuesta.ok) {
+        throw new Error("Error al cerrar sesión");
+    }
+        localStorage.clear();
+        window.location.href = 'login.html';
+
+    }catch (error) {
+        console.error("Error al cerrar sesión:", error);
+    }
 }
