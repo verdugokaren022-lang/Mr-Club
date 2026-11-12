@@ -7,7 +7,7 @@ formulario.addEventListener("submit", async function (e) {
     const mensaje = document.getElementById("mensajeLogin");
     boton.disabled= true;
     try {
-        const respuesta = await fetch(formulario.action, {
+        const respuesta = await fetch(formulario.action, {// Enviar los datos del formulario al servidor usando fetch
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(
@@ -18,10 +18,10 @@ formulario.addEventListener("submit", async function (e) {
 alert("Respuesta recibida"); // Muestra un alert cuando se recibe la respuesta del servidor
    
 const resultado = await respuesta.json();// Pasar la respuesta a JSON a un objeto de JavaScript
-    if(!resultado.success) {
-        mensaje.textContent = 
+    if(!resultado.success) {// Verificar si la respuesta no es exitosa
+        mensaje.textContent =
         "No fue posible iniciar sesión. Por favor, verifique sus credenciales.";
-    boton.disabled = false;
+    boton.disabled = false;// Habilitar el botón de envío nuevamente
     return;// Salir de la función si la respuesta no es exitosa
     }
     

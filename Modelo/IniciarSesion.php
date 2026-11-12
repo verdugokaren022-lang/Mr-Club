@@ -39,6 +39,8 @@ try{
         throw new Exception("Email o contraseña incorrectos");
         }
 
+
+        
     $_SESSION["rol"] = strtolower($asociado['rol']);
     $_SESSION["documento"] = $asociado['documento'];
 
