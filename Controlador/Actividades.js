@@ -64,7 +64,7 @@ async function cargarActividades() {
             crearCelda(actividad.totalRecaudo===null?"Pendiente":Number(actividad.totalRecaudo).toLocaleString("es-CO", { style: "currency", currency: "COP" })),
         );
         if(esAdministrador){
-            const acciones = document.createElement(td);
+            const acciones = document.createElement("td");
             acciones.className="text-nowrap";
             
             const botonEditar = document.createElement("button");
@@ -87,3 +87,4 @@ async function cargarActividades() {
         });
 
     }
+}
