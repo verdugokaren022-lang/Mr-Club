@@ -2,7 +2,7 @@
 
 session_start();
 
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 
 try{
       if ($_SERVER['REQUEST_METHOD'] !=='POST') {
@@ -22,7 +22,7 @@ try{
     $email = $datos['email'] ?? "";
     $contraseña = $datos['contraseña'] ?? "";
 
-    if ( !is_string($email) || !is_string($contraseña) || $contraseña === "") {
+    if (!is_string($email) || !is_string($contraseña) || $contraseña === "") {
         http_response_code(400);
         throw new Exception("Datos incompletos");
     }
@@ -53,8 +53,12 @@ try{
     }catch(PDOException $e){
     $errorMensaje = "Error: " . $e->getMessage();
     echo json_encode([
-        "success" => false, "mensaje" => $errorMensaje]);
+        "success" => false, 
+        "mensaje" => $errorMensaje]);
 
     }catch (Exception $e) {
-        echo json_encode(["success" => false, "mensaje" => $e->getMessage()]);
+        echo json_encode([
+            "success" => false, 
+            "mensaje" => $e->getMessage()
+            ]);
 }

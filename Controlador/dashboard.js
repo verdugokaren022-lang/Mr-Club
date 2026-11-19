@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () =>{
-const logueado = localStorage.getItem('logueadoo');
+const logueado = localStorage.getItem('logueado');
 
 if (logueado !== 'true') {
     window.location.href = 'login.html';

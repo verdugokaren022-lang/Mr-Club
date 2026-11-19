@@ -1,5 +1,5 @@
-const formulario = document.getElementById("FormuLogin");
-formulario.addEventListener("submit", async function (e) {
+const formulario = document.getElementById('FormuLogin');
+formulario.addEventListener('submit', async function (e) {
     e.preventDefault();
     alert("Formulario enviado"); // Muestra un alert cuando se envía el formulario
 
@@ -17,25 +17,25 @@ formulario.addEventListener("submit", async function (e) {
 
 alert("Respuesta recibida"); // Muestra un alert cuando se recibe la respuesta del servidor
    
-const resultado = await respuesta.json();// Pasar la respuesta a JSON a un objeto de JavaScript
-    if(!resultado.success) {// Verificar si la respuesta no es exitosa
-        mensaje.textContent =
-        "No fue posible iniciar sesión. Por favor, verifique sus credenciales.";
-    boton.disabled = false;// Habilitar el botón de envío nuevamente
-    return;// Salir de la función si la respuesta no es exitosa
-    }
+        const resultado = await respuesta.json();  // Pasar la respuesta a JSON a un objeto de JavaScript
+    
+        if(!resultado.success) {  // Verificar si la respuesta no es exitosa
+            mensaje.textContent = "No fue posible iniciar sesión. Por favor, verifique sus credenciales.";
+            boton.disabled = false;  // Habilitar el botón de envío nuevamente
+            return;  // Salir de la función si la respuesta no es exitosa
+        }
     
 alert("Inicio de sesión exitoso"); // Muestra un alert cuando el inicio de sesión es exitoso
+    localStorage.clear();
 
-    localStorage.setItem("logueado", "true");
-    localStorage.setItem("rol", resultado.rol);
-    localStorage.setItem("nombre", resultado.nombre);
+    localStorage.setItem('logueado', true);
+    localStorage.setItem('rol', resultado.rol);
+    localStorage.setItem('nombre', resultado.nombre);
 
-    window.location.href = "dashboard.html";// Redirigir al usuario a la página de dashboard si la respuesta es exitosa
-
+    window.location.href = `../Vista/dashboard.html?v=${Date.now()}`; //Modificación Cache
 
     }catch (error) {
-        console.error("Error al enviar el formulario: ", error);
+        console.error('Error al enviar el formulario: ', error);
         mensaje.textContent = 
             "Ocurrió un error al enviar el formulario. Por favor, inténtelo de nuevo más tarde.";
     } finally {

@@ -37,7 +37,7 @@ function validarId($id){
     if ($idActividad === false) {
         http_response_code(400);
         throw new Exception(
-            jhmnhhkmhhk--
+            "El identificador de la actividad es válido"
         )
     }
         }
