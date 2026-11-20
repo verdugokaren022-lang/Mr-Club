@@ -31,7 +31,12 @@
         .icono-principal {
             font-size: 45px;
             color: #0d4dfd;
+            transform-origin: bottom left; /*Trasición de los iconos hacia adelante*/
+            transition: transform 0.3s ease;
         }
+        .modulo-card:hover .icono-principal {
+        transform: scale(1.15); /*Incrementa el 15% del tamaño original*/
+    }
 
     </style>
 
@@ -68,7 +73,7 @@
             <div class="col-md-3">
                 <a href="prestamos.html" class="text-decoration-none">
                 <div class="card modulo-card shadow-sm p-3">
-                    <i class="bi bi-people icono-principal"></i>
+                    <i class="bi bi-cash-coin icono-principal"></i>
                     <h4 class="text-primary">Préstamos</h4>
                     <strong>Gestión de préstamos</strong>
                     <p class="small text-muted mt-2">
@@ -81,7 +86,7 @@
             <div class="col-md-3">
                 <a href="actividades.html" class="text-decoration-none">
                 <div class="card modulo-card shadow-sm p-3">
-                    <i class="bi bi-people icono-principal"></i>
+                    <i class="bi bi-calendar2-event-fill icono-principal"></i>
                     <h4 class="text-primary">Actividades</h4>
                     <strong>Registro de Actividades</strong>
                     <p class="small text-muted mt-2">
@@ -93,7 +98,7 @@
             <div class="col-md-3">
                 <a href="pagos.html" class="text-decoration-none">
                 <div class="card modulo-card shadow-sm p-3">
-                    <i class="bi bi-people icono-principal"></i>
+                    <i class="bi bi-file-earmark-bar-graph icono-principal"></i>
                     <h4 class="text-primary">Reportes</h4>
                     <strong>Consultas y Saldos</strong>
                     <p class="small text-muted">Ver reportes del club.</p>
@@ -112,7 +117,7 @@
             </div>
             <div class="col-md-3">
                 <div class="card modulo-card asociado shadow-sm p-3">
-                    <i class="bi bi-people icono-principal"></i>
+                    <i class="bi bi-wallet2 icono-principal"></i>
                     <h4 class="text-muted">Mis Pagos</h4>
                     <p class="small text-muted">Ver el estado de mis pagos.</p>
                 </div>

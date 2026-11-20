@@ -25,7 +25,7 @@ async function solicitarApi(metodo, datos) {
     }
 
     if (!respuesta.ok || !resultado.success) {
-        throw new Error(resultado.mensaje || "Error en la solicitud");
+        throw new Error(resultado.message || "Error en la solicitud");
     }
 
     return resultado;

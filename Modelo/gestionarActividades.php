@@ -9,7 +9,7 @@ function leerDatos()
     $datos = json_decode(file_get_contents("php://input"), true);
     if (json_last_error() !== JSON_ERROR_NONE){
         http_response_code(400);
-        throw new Exception("Error al decodificar JSON: ". json_last_error_msg())
+        throw new Exception("Error al decodificar JSON: ". json_last_error_msg());
     }
     return $datos;
 }
@@ -19,6 +19,7 @@ function validarActividad($datos)
     $nombre=$datos['nombreActividad'] ?? null;
     $fecha=$datos['fechaEvento'] ?? null;
     $municipio=$datos['municipio'] ?? null;
+
     if(!is_string($nombre)||trim($nombre)==="" || strlen($nombre) > 100 || !is_string($municipio) || trim($municipio) === "" || strlen($municipio) > 50) {
     http_response_code(400);
     throw new Exception(
@@ -33,17 +34,18 @@ function validarActividad($datos)
 }
 
 function validarId($id){
-    $idActividad=var($id,FILTER_VALIDATE_INT,["options" => ["min_range" => 1]]);
+    $idActividad=filter_var($id,FILTER_VALIDATE_INT,["options" => ["min_range" => 1]]);
     if ($idActividad === false) {
         http_response_code(400);
         throw new Exception(
             "El identificador de la actividad es válido"
-        )
+        );
     }
-        }
+    return $idActividad;
+}
 
 try{
-    if (isset($_SESSION["documento"], $_SESSION["rol"])) {
+    if (!isset($_SESSION["documento"], $_SESSION["rol"])) {
         http_response_code(400);
         throw new Exception("Inicia sesión para consultar las actividades");
     }
@@ -56,7 +58,7 @@ try{
         http_response_code(403);
         throw new Exception("No tienes permiso para realizar esta acción");
     }
-    require_once __DIR__."/Actividad.php";
+    require_once __DIR__ . "/actividades.php";
     $actividad = new Actividad();
 
     switch($metodo){
@@ -91,6 +93,7 @@ try{
             ];
             http_response_code(200);
             break;
+
         case "DELETE":
             $datos = leerDatos();
             $idActividad = validarId($datos["idActividad"] ?? null);
@@ -109,7 +112,7 @@ try{
     }
 
     echo json_encode($resultado);
-} catch (PDOExcepti $e) {
+} catch (PDOException $e) {
     http_response_code(500);
     echo json_encode([
         "success" => false,
@@ -119,5 +122,5 @@ try{
     echo json_encode([
         "success" => false,
         "message" => $e->getMessage()
-    ])
+    ]);
 }

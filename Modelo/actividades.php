@@ -1,16 +1,16 @@
 <?php
 
 require __DIR__ . '/../Config/conexion.php';
-class Atividades{
+class Actividad{
     private $conexion;
 
-    public function_construct()
+    public function __construct()
     {
         $conexionDB = new Conexion();
         $this -> conexion = $conexionDB -> conectar();
     }
     public function obtenerActividades(){
-        $sql = "SELECT * FROM activiades ORDER BY ASC";
+        $sql = "SELECT * FROM actividades ORDER BY idActividades ASC";
         $consulta = $this ->conexion->prepare($sql);
         $consulta->execute();
         return $consulta -> fetchAll();
@@ -18,12 +18,12 @@ class Atividades{
     public function guardar($datos){
         $sql = "INSERT INTO actividades (nombreActividad, fechaEvento, municipio, totalRecaudado)
                 VALUES (:nombreActividad, :fechaEvento, :municipio, :totalRecaudado)";
-        $consulta = $this -> conexion->preprare($sql);
+        $consulta = $this -> conexion->prepare($sql);
         return $consulta ->execute([
             ":nombreActividad" => $datos['nombreActividad'],
             ":fechaEvento" => $datos['fechaEvento'],
             ":municipio" => $datos['municipio'],
-            ":totalRecaudado" => $datos['totalRecaudado']
+           
         ]);
     }
     public function eliminar($idActividad){
@@ -32,15 +32,19 @@ class Atividades{
         $consulta -> execute([':idActividad' => $idActividad]);
         return $consulta-> rowCount() > 0; //Retorna true si se elimino alguna fila 
     }
-    public editar($datos){
-        $sql = "UPDATE actividades SET nombreAtividad = :nombreActividad, fechaEvento = :fechaEvento, municipio = :municipio, totalRecaudado = :totalRecaudado";
+    public function editar($datos){
+        $sql = "UPDATE actividades SET nombreActividad = :nombreActividad, fechaEvento = :fechaEvento, municipio = :municipio, totalRecaudado = :totalRecaudado WHERE idActividad = :idActividad";
         $consulta = $this ->conexion->prepare($sql);
-        return $consulta->execute([
+        $ejecuto = $consulta->execute([
             ":nombreActividad" => $datos['nombreActividad'],
             ":fechaEvento" => $datos['fechaEvento'],
             ":municipio" => $datos['municipio'],
             ":totalRecaudado" => $datos['totalRecaudado']
         ]);
+
+        if (!$ejecuto) {
+            return false;
+        }
 
         if ($consulta->rowCount()> 0 ) {
             return true;
