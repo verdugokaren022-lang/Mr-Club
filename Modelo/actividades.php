@@ -10,7 +10,7 @@ class Actividad{
         $this -> conexion = $conexionDB -> conectar();
     }
     public function obtenerActividades(){
-        $sql = "SELECT * FROM actividades ORDER BY idActividades ASC";
+        $sql = "SELECT * FROM actividades ORDER BY idActividad ASC";
         $consulta = $this ->conexion->prepare($sql);
         $consulta->execute();
         return $consulta -> fetchAll();
@@ -19,13 +19,14 @@ class Actividad{
         $sql = "INSERT INTO actividades (nombreActividad, fechaEvento, municipio, totalRecaudado)
                 VALUES (:nombreActividad, :fechaEvento, :municipio, :totalRecaudado)";
         $consulta = $this -> conexion->prepare($sql);
-        return $consulta ->execute([
+        return $consulta->execute([
             ":nombreActividad" => $datos['nombreActividad'],
             ":fechaEvento" => $datos['fechaEvento'],
             ":municipio" => $datos['municipio'],
-           
+            ":totalRecaudado"  => $datos['totalRecaudado'] ?? null,
         ]);
     }
+    
     public function eliminar($idActividad){
         $sql = "DELETE FROM actividades WHERE idActividad = :idActividad";
         $consulta = $this->conexion->prepare($sql);
@@ -39,23 +40,22 @@ class Actividad{
             ":nombreActividad" => $datos['nombreActividad'],
             ":fechaEvento" => $datos['fechaEvento'],
             ":municipio" => $datos['municipio'],
-            ":totalRecaudado" => $datos['totalRecaudado']
+            ":totalRecaudado" => $datos['totalRecaudado'],
+            ":idActividad" => $datos['idActividad']
         ]);
 
         if (!$ejecuto) {
             return false;
         }
 
-        if ($consulta->rowCount()> 0 ) {
+        if ($consulta->rowCount() > 0 ) { 
             return true;
-
-            $verificar =$this->connexion->prepare("SELECT 1 FROM actividades WHERE idActividad = :idActividad");
-            $verificar->execute([':idActividad' => $datos['idActividad']]);
-
-            return (bool)$verificar->fetchColumn();// Retorna true siel registro existe, false si no
-            
         }
 
-    }
+            $verificar =$this->conexion->prepare("SELECT 1 FROM actividades WHERE idActividad = :idActividad");
+            $verificar->execute([':idActividad' => $datos['idActividad']]);
 
+            return (bool)$verificar->fetchColumn();// Retorna true si el registro existe, false si no
+            
+    }
 }

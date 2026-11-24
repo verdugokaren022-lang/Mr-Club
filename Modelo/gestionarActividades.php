@@ -3,8 +3,12 @@ session_start();
 
 header("Content-Type: application/json ;charset=UTF-8");
 
-function leerDatos()
+function leerDatos(): array
 {
+    $raw = file_get_contents("php://input");
+    if ($raw === false || trim($raw) === "") {
+        return [];
+    }
 
     $datos = json_decode(file_get_contents("php://input"), true);
     if (json_last_error() !== JSON_ERROR_NONE){
@@ -46,7 +50,7 @@ function validarId($id){
 
 try{
     if (!isset($_SESSION["documento"], $_SESSION["rol"])) {
-        http_response_code(400);
+        http_response_code(401);
         throw new Exception("Inicia sesión para consultar las actividades");
     }
     $metodo = $_SERVER["REQUEST_METHOD"];
@@ -64,32 +68,39 @@ try{
     switch($metodo){
         case "GET":
             $resultado = [
-                "success" => true,
-                "message" => "Actividad creada exitosamente"
+            "success" => true,
+            "rol" => $_SESSION["rol"],
+            "actividades" => $actividad->obtenerActividades()
             ];
             http_response_code(200);
             break;
+
         case "POST":
-            $datos = validarActividad(leerDatos());
-            $actividad->guardar($datos);
-            $resultado = [
-                "success" => true,
-                "message" => "Actividad creada exitosamente"
-            ];
-            http_response_code(201);
-            break;
+        $entrada = leerDatos();
+        $datos = validarActividad($entrada);
+        $total = $entrada["totalRecaudado"] ?? null;
+        $datos["totalRecaudado"] = ($total === "" || $total === null) ? null : $total;
+        $actividad->guardar($datos);
+        $resultado = [
+            "success" => true,
+            "message" => "Actividad creada exitosamente"
+        ];
+        http_response_code(201);
+        break;
+            
         case "PUT":
             $datos = leerDatos();
             $datos["idActividad"] = validarId($datos["idActividad"] ?? null);
             $datos = array_merge($datos,validarActividad($datos));
-
+            $datos["totalRecaudado"] = $datos["totalRecaudado"] ?? null;
+            
             if(!$actividad->editar($datos)){
                 http_response_code(404);
                 throw new Exception("No Se Encontró La Actividad");
             }
             $resultado = [
                 "success" => true,
-                "mensaje" => "Actividad actualizada correctamente"
+                "message" => "Actividad actualizada correctamente"
             ];
             http_response_code(200);
             break;
@@ -105,7 +116,7 @@ try{
             
             $resultado = [
                 "success" => true,
-                "mensaje" => "Actividad eliminada correctamente"
+                "message" => "Actividad eliminada correctamente"
             ];
             http_response_code(200);
             break;

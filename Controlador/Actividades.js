@@ -2,10 +2,11 @@ const formActividad = document.getElementById("formActuvidades");
 let esAdministrador= false;
 let actividades = [];
 let accionesConfiguradas = false;
+const listaActividades = document.getElementById("listaActividades");
 const formularioActividad=document.getElementById("formActividad");
-const modalActividad=new bootstrap.Modal(
-    document.getElementById("modalActividad")
-);
+const elementoModal = document.getElementById("modalActividad");
+const modalActividad =new bootstrap.Modal(elementoModal);
+
 
 async function solicitarApi(metodo, datos) {
     const opciones = {
@@ -66,7 +67,7 @@ async function cargarActividades() {
             crearCelda(actividad.nombreActividad),
             crearCelda(actividad.fechaEvento),
             crearCelda(actividad.municipio),
-            crearCelda(actividad.totalRecaudo===null?"Pendiente":Number(actividad.totalRecaudo).toLocaleString("es-CO", { style: "currency", currency: "COP" })),
+            crearCelda(actividad.totalRecaudado===null?"Pendiente":Number(actividad.totalRecaudado).toLocaleString("es-CO", { style: "currency", currency: "COP" })),
         );
         if(esAdministrador){
             const acciones = document.createElement("td");
@@ -98,10 +99,10 @@ async function cargarActividades() {
     }
 
     async function eliminarActividad(actividad) {
-        window.confirm(`¿Deseas eliminar la actividad "${actividad.nombreActividad}"?`,);
+        const confirmar = window.confirm(`¿Deseas eliminar la actividad "${actividad.nombreActividad}"?`);
 
-        if(!confirmar){
-            return
+        if (!confirmar) {
+            return;
         }
 
         try {
@@ -122,7 +123,7 @@ async function cargarActividades() {
 
         if(esAdministrador) {
             botonNueva.classList.remove("d-none");
-            encabezadoAcciones.classList.remove("d-nome");
+            encabezadoAcciones.classList.remove("d-none");
             accionesConfiguradas = true;
             return;
         }
@@ -134,8 +135,7 @@ async function cargarActividades() {
         document.getElementById("nombreActividad").value = actividad.nombreActividad;
         document.getElementById("fechaEvento").value = actividad.fechaEvento;
         document.getElementById("municipio").value = actividad.municipio;
-        document.getElementById("totalRecaudado").value = 
-          actividad.totalRecaudado ?? "";
+        document.getElementById("totalRecaudado").value = actividad.totalRecaudado ?? "";
 
           document.getElementById("campoTotalRecaudado").classList.remove("d-none");
           document.getElementById("tituloModalActividad").textContent =
@@ -164,7 +164,7 @@ async function cargarActividades() {
             alert("actualizada correctamente");
             cargarActividades();
         } catch (error) {
-            alert(error.mensaje);
+            alert(error.message);
         }
     });
 
