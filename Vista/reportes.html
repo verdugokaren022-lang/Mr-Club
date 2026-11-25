@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <title>CLUB ACERIAS - Reportes y Consultas</title>
+  <style>
+    .header-mr {
+      background-color: #be21a9;
+      border-bottom: 1px solid #e41a97;
+      padding: 20px 3px;
+    }
+  </style>
+</head>
+
+<body class="bg-light">
+
+  <div class="header-mr d-flex justify-content-between align-items-center px-4 text-white">
+    <h3>CLUB ACERIAS - Consultas y Reportes</h3>
+    <a href="dashboard.html" class="btn btn-light btn-sm">
+      <i class="bi bi-arrow-left"></i> Volver al Panel
+    </a>
+  </div>
+
+  <main class="container py-4">
+    <form class="card shadow-sm p-3 mb-4" id="reportFilters">
+      <div class="row g-3 align-items-end">
+        <div class="col-md-4">
+          <label for="reportType" class="form-label fw-bold">Consulta / Tipo de reporte</label>
+          <select class="form-select" id="reportType">
+            <option value="asociados_todos">1. Todos los asociados</option>
+            <option value="asociados_mujeres">2. Mujeres pertenecientes al club</option>
+            <option value="total_prestamos">3. Cantidad de préstamos realizados</option>
+            <option value="prestamos_asociado">4. Préstamos y nombres de asociados</option>
+            <option value="prestamos_fechas">5. Préstamos por rango de fechas</option>
+            <option value="asociados_sogamoso">6. Asociados que viven en Sogamoso</option>
+            <option value="prestamos_cedula">7. Préstamos por cédula del asociado</option>
+            <option value="pagos_cedula">8. Total pagado por cédula del asociado</option>
+            <option value="actividades_2018">9. Cantidad de actividades en 2018</option>
+            <option value="actividades_recaudo">10. Actividades y total recaudado</option>
+            <option value="participacion_cedula">11. N.º de actividades por cédula</option>
+            <option value="cuotas_prestamo">12. Cuotas y fechas por código de préstamo</option>
+            <option value="actividades_paipa">13. Actividades en el municipio de Paipa</option>
+            <option value="participantes_actividad">14. Participantes por nombre de actividad</option>
+          </select>
+        </div>
+
+        <div class="col-md-3">
+          <label for="filtroValor" class="form-label fw-bold">Cédula / Código / Nombre / Ciudad</label>
+          <input type="text" class="form-control" id="filtroValor" placeholder="Opcional según consulta">
+        </div>
+
+        <div class="col-md-2">
+          <label for="fromDate" class="form-label fw-bold">Desde</label>
+          <input type="date" class="form-control" id="fromDate">
+        </div>
+
+        <div class="col-md-2">
+          <label for="toDate" class="form-label fw-bold">Hasta</label>
+          <input type="date" class="form-control" id="toDate">
+        </div>
+
+        <div class="col-md-1 d-grid">
+          <button type="submit" class="btn btn-primary fw-bold">Generar</button>
+        </div>
+      </div>
+    </form>
+
+    <section class="row g-3 mb-4 text-center">
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <span class="text-muted">Total / Valor</span>
+          <strong class="fs-4 mt-1" id="total">$0</strong>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <span class="text-muted">Registros / Cantidad</span>
+          <strong class="fs-4 mt-1" id="movements">0</strong>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card shadow-sm p-3">
+          <span class="text-muted">Promedio / Detalle</span>
+          <strong class="fs-4 mt-1" id="average">$0</strong>
+        </div>
+      </div>
+    </section>
+
+    <div class="card shadow-sm">
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-dark" id="reportHead">
+            <tr>
+              <th>Columna 1</th>
+              <th>Columna 2</th>
+              <th>Columna 3</th>
+              <th>Columna 4</th>
+            </tr>
+          </thead>
+          <tbody id="reportRows">
+            <tr>
+              <td colspan="4" class="text-center text-muted py-4">No hay datos para mostrar.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="../Controlador/reportes.js"></script>
+</body>
+
+</html>

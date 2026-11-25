@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | MR CLUB</title>
+    <style>
+        :root {
+            --navy: #0b1d33;
+            --gold: #e1b12c;
+            --cream: #f6f3ec;
+            --white: #ffffff;
+            --text: #243447;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Arial, Helvetica, sans-serif;
+            color: var(--text);
+            background: var(--cream);
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 6%;
+            color: var(--white);
+            background: var(--navy);
+        }
+
+        .brand {
+            color: var(--white);
+            font-size: 1.35rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .brand span { color: var(--gold); }
+
+        main {
+            width: min(900px, 88%);
+            margin: 48px auto;
+        }
+
+        h1 { margin-top: 0; color: var(--navy); }
+
+        .profile-card {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 32px;
+            padding: 32px;
+            background: var(--white);
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(11, 29, 51, 0.08);
+        }
+
+        .avatar {
+            display: grid;
+            place-items: center;
+            width: 180px;
+            height: 180px;
+            margin: auto;
+            border: 6px solid var(--cream);
+            border-radius: 50%;
+            color: var(--navy);
+            background: var(--gold);
+            font-size: 4rem;
+            font-weight: 700;
+        }
+
+        .field { margin-bottom: 18px; }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: var(--navy);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        input {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #ccd3da;
+            border-radius: 6px;
+            font: inherit;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        button {
+            padding: 11px 18px;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .primary { color: var(--navy); background: var(--gold); }
+        .secondary { color: var(--navy); background: #e8edf2; }
+
+        @media (max-width: 680px) {
+            .profile-card { grid-template-columns: 1fr; }
+            .actions { flex-direction: column-reverse; }
+            button { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a class="brand" href="#" aria-label="MR CLUB - Inicio"><span>MR</span> CLUB</a>
+        <span>Mi cuenta</span>
+    </header>
+
+    <main>
+        <h1>Mi Perfil</h1>
+        <form class="profile-card">
+            <div class="avatar" aria-label="Inicial del usuario">M</div>
+
+            <div>
+                <div class="field">
+                    <label for="nombre">Nombre completo</label>
+                    <input id="nombre" name="nombre" type="text" value="">
+                </div>
+
+                <div class="field">
+                    <label for="correo">Correo electrónico</label>
+                    <input id="correo" name="correo" type="email" value="">
+                </div>
+
+                <div class="field">
+                    <label for="telefono">Teléfono</label>
+                    <input id="telefono" name="telefono" type="tel" value="">
+                </div>
+
+                <div class="actions">
+                    <button class="secondary" type="reset">Cancelar</button>
+                    <button class="primary" type="submit">Guardar cambios</button>
+                </div>
+            </div>
+        </form>
+    </main>
+</body>
+</html>
+
+
+
