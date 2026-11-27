@@ -28,12 +28,14 @@ foreach ($campos as $campo){
     if(!isset($datos[$campo])){
         http_response_code(400);
         throw new Exception("Falta el campo:" . $campo);
+        }
     }
-    }
+
     if(!filter_var($datos['email'], FILTER_VALIDATE_EMAIL)){
         http_response_code(400);
         throw new Exception("Email inválido");
     }
+    
     $asociado = new Asociados($datos);
 
     $resultado = $asociado->guardar();

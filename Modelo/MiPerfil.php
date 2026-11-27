@@ -11,7 +11,8 @@ class Perfil {
 
     public function obtener($documento) {
         $sql = "SELECT documento, nombres, apellidos, email, rol
-                FROM asociados WHERE documento = :documento";
+                FROM asociados
+                WHERE documento = :documento";
         $consulta = $this->conexion->prepare($sql);
         $consulta->execute([":documento" => $documento]);
         return $consulta->fetch(PDO::FETCH_ASSOC);

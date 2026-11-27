@@ -14,7 +14,7 @@ try {
         throw new Exception("Método HTTP no permitido");
     }
 
-    require_once __DIR__ . "/Perfil.php";
+    require_once __DIR__ . "/MiPerfil.php";
     $perfil = new Perfil();
     $documento = $_SESSION["documento"];
 

@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
-    
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil | MR CLUB</title>
     <style>
         :root {
-            --navy: #0b1d33;
-            --gold: #e1b12c;
+            --navy: #c0a6cf;
+            --gold: #d22ce1;
             --cream: #f6f3ec;
             --white: #ffffff;
-            --text: #243447;
+            --text: #58386d;
         }
 
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
@@ -41,14 +43,42 @@
             text-decoration: none;
         }
 
-        .brand span { color: var(--gold); }
+        .brand span {
+            color: var(--gold);
+        }
 
         main {
             width: min(900px, 88%);
             margin: 48px auto;
         }
 
-        h1 { margin-top: 0; color: var(--navy); }
+        h1 {
+            margin-top: 0;
+            color: var(--navy);
+        }
+
+        #mensaje {
+            margin-bottom: 16px;
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        #mensaje:empty {
+            display: none;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #86efac;
+        }
+
+        .alert-danger {
+            background: #fee2e2;
+            color: #991b1b;
+            border: 1px solid #fca5a5;
+        }
 
         .profile-card {
             display: grid;
@@ -74,7 +104,9 @@
             font-weight: 700;
         }
 
-        .field { margin-bottom: 18px; }
+        .field {
+            margin-bottom: 18px;
+        }
 
         label {
             display: block;
@@ -92,6 +124,11 @@
             font: inherit;
         }
 
+        input[readonly] {
+            background-color: #f3f4f6;
+            color: #555;
+        }
+
         .actions {
             display: flex;
             justify-content: flex-end;
@@ -99,60 +136,89 @@
             margin-top: 24px;
         }
 
-        button {
+        button,
+        a.secondary {
             padding: 11px 18px;
             border: 0;
             border-radius: 6px;
             cursor: pointer;
             font-weight: 700;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .primary { color: var(--navy); background: var(--gold); }
-        .secondary { color: var(--navy); background: #e8edf2; }
+        .primary {
+            color: var(--navy);
+            background: var(--gold);
+        }
+
+        .secondary {
+            color: var(--navy);
+            background: #e8edf2;
+        }
 
         @media (max-width: 680px) {
-            .profile-card { grid-template-columns: 1fr; }
-            .actions { flex-direction: column-reverse; }
-            button { width: 100%; }
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
+
+            .actions {
+                flex-direction: column-reverse;
+            }
+
+            button,
+            a.secondary {
+                width: 100%;
+            }
         }
     </style>
 </head>
+
 <body>
     <header>
-        <a class="brand" href="#" aria-label="MR CLUB - Inicio"><span>MR</span> CLUB</a>
+        <a class="brand" href="dashboard.html" aria-label="MR CLUB - Inicio"><span>MR</span> CLUB</a>
         <span>Mi cuenta</span>
     </header>
 
     <main>
         <h1>Mi Perfil</h1>
-        <form class="profile-card">
-            <div class="avatar" aria-label="Inicial del usuario">M</div>
+        <div id="mensaje" role="alert"></div>
+
+        <form id="formPerfil" class="profile-card">
+            <div id="avatarInicial" class="avatar" aria-label="Inicial del usuario">M</div>
 
             <div>
                 <div class="field">
-                    <label for="nombre">Nombre completo</label>
-                    <input id="nombre" name="nombre" type="text" value="">
+                    <label for="documento">Documento</label>
+                    <input id="documento" name="documento" type="text" readonly>
                 </div>
 
                 <div class="field">
-                    <label for="correo">Correo electrónico</label>
-                    <input id="correo" name="correo" type="email" value="">
+                    <label for="nombres">Nombres</label>
+                    <input id="nombres" name="nombres" type="text" required>
                 </div>
 
                 <div class="field">
-                    <label for="telefono">Teléfono</label>
-                    <input id="telefono" name="telefono" type="tel" value="">
+                    <label for="apellidos">Apellidos</label>
+                    <input id="apellidos" name="apellidos" type="text" required>
+                </div>
+
+                <div class="field">
+                    <label for="email">Correo electrónico</label>
+                    <input id="email" name="email" type="email" required>
                 </div>
 
                 <div class="actions">
-                    <button class="secondary" type="reset">Cancelar</button>
+                    <a class="secondary" href="dashboard.html">Volver Al Panel</a>
                     <button class="primary" type="submit">Guardar cambios</button>
                 </div>
             </div>
         </form>
     </main>
+
+    <script src="../Controlador/MiPerfil.js"></script>
 </body>
+
 </html>
-
-
-

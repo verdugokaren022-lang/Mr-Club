@@ -1,7 +1,7 @@
 const formulario = document.getElementById('FormuRegistro');
 
 formulario.addEventListener('submit', async function (event) {
-    alert("Formulario enviado"); // Muestra un alert cuando se envía el formulario
+    alert("Formulario enviado"); // Muestra un alerta cuando se envía el formulario
 
     // Evita recargar la pagina al enviar el formulario.
     event.preventDefault();
